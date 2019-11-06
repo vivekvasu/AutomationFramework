@@ -19,7 +19,7 @@ public class ExtentManager
 
 	public static ExtentReports  setExtentReports ()
 	{
-		htmlReporter = new ExtentHtmlReporter("extent.html");
+		htmlReporter = new ExtentHtmlReporter("./reports/extent.html");
 		htmlReporter.config().setReportName("My Test Report");
 		htmlReporter.config().setEncoding("utf-8");
 		htmlReporter.config().setTheme(Theme.DARK);

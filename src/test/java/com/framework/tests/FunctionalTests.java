@@ -38,10 +38,10 @@ public class FunctionalTests {
 	@BeforeSuite
 	public synchronized void doInitialSetUp(ITestContext context)
 	{
-		PropertyConfigurator.configure("log4j.properties");
+		PropertyConfigurator.configure("./Resources/log4j.properties");
 		//Turn off the freemarker logger
 		System.setProperty("org.freemarker.loggerLibrary", "none");
-		InputProperties = PropertyUtils.readPropertyFile("./global.properties");
+		InputProperties = PropertyUtils.readPropertyFile("./Resources/global.properties");
 		driver = DriverFactory.getWebDriver();
 		extent = ExtentManager.getInstance();
 		try {
