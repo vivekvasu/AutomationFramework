@@ -22,17 +22,17 @@ import com.utilities.PropertyUtils;
 import com.utilities.VideoRecorder;
 
 public class FunctionalTests {
-	
+
 	WebDriver driver;
-	
+
 	private ExtentReports extent;
-	
+
 	private VideoRecorder recorder;
-	
+
 	public static Properties InputProperties;
-	
+
 	public static ThreadLocal<ExtentTest> methods = new ThreadLocal<ExtentTest>();
-	
+
 	public static ThreadLocal <ExtentTest> parentTest = new ThreadLocal<ExtentTest>();
 
 	@BeforeSuite
@@ -45,7 +45,7 @@ public class FunctionalTests {
 		driver = DriverFactory.getWebDriver();
 		extent = ExtentManager.getInstance();
 		try {
-			recorder =	VideoRecorder.startRecording(context.getCurrentXmlTest().getName());
+			recorder = VideoRecorder.startRecording(context.getCurrentXmlTest().getName());
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
