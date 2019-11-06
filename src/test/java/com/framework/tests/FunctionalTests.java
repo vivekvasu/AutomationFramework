@@ -24,10 +24,15 @@ import com.utilities.VideoRecorder;
 public class FunctionalTests {
 	
 	WebDriver driver;
+	
 	private ExtentReports extent;
+	
 	private VideoRecorder recorder;
+	
 	public static Properties InputProperties;
+	
 	public static ThreadLocal<ExtentTest> methods = new ThreadLocal<ExtentTest>();
+	
 	public static ThreadLocal <ExtentTest> parentTest = new ThreadLocal<ExtentTest>();
 
 	@BeforeSuite
