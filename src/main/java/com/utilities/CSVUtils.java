@@ -28,7 +28,7 @@ public class CSVUtils {
 	 */
 	public static List<String> GetCSVColumnValues(String filePath, String columnName, String[] headers)
 	{
-		HTMLLogger.info("Executing GetCSVColumnValues");
+		Report.info("Executing GetCSVColumnValues");
 		Reader reader = null;
 		CSVParser csvParser = null;
 		String csvValue = null;
@@ -47,7 +47,7 @@ public class CSVUtils {
 		{
 			e.printStackTrace();
 		}
-		HTMLLogger.info("Exiting GetCSVColumnValues");
+		Report.info("Exiting GetCSVColumnValues");
 		return csvColumnList;
 	}
 

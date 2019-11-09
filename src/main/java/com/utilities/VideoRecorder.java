@@ -70,32 +70,37 @@ public class VideoRecorder extends ScreenRecorder {
 	 * @return
 	 * @throws Exception
 	 */
-	public static VideoRecorder startRecording(String fileName) throws Exception
+	public static VideoRecorder startRecording(String fileName)
 	{    
-		File file = new File("./ScreenRecorder/");
+		try {
+			File file = new File("./ScreenRecorder/");
 
-		Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
-		int width = screenSize.width;
-		int height = screenSize.height;
+			Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
+			int width = screenSize.width;
+			int height = screenSize.height;
 
-		Rectangle captureSize = new Rectangle(0,0, width, height);
+			Rectangle captureSize = new Rectangle(0,0, width, height);
 
-		GraphicsConfiguration graficConfig = GraphicsEnvironment
-				.getLocalGraphicsEnvironment()
-				.getDefaultScreenDevice()
-				.getDefaultConfiguration();
-		
-		screenRecorder = new VideoRecorder(graficConfig, captureSize, 
-				new Format(MediaTypeKey, MediaType.FILE, MimeTypeKey, MIME_AVI),
-				new Format(MediaTypeKey, MediaType.VIDEO, EncodingKey, ENCODING_AVI_TECHSMITH_SCREEN_CAPTURE,
-						CompressorNameKey, ENCODING_AVI_TECHSMITH_SCREEN_CAPTURE, DepthKey, 24, FrameRateKey,
-						Rational.valueOf(15), QualityKey, 1.0f, KeyFrameIntervalKey, 15 * 60),
-				new Format(MediaTypeKey, MediaType.VIDEO, EncodingKey, "black", FrameRateKey, Rational.valueOf(30)),
-				null, file, fileName);
-		screenRecorder.start();
+			GraphicsConfiguration graficConfig = GraphicsEnvironment
+					.getLocalGraphicsEnvironment()
+					.getDefaultScreenDevice()
+					.getDefaultConfiguration();
+
+			screenRecorder = new VideoRecorder(graficConfig, captureSize, 
+					new Format(MediaTypeKey, MediaType.FILE, MimeTypeKey, MIME_AVI),
+					new Format(MediaTypeKey, MediaType.VIDEO, EncodingKey, ENCODING_AVI_TECHSMITH_SCREEN_CAPTURE,
+							CompressorNameKey, ENCODING_AVI_TECHSMITH_SCREEN_CAPTURE, DepthKey, 24, FrameRateKey,
+							Rational.valueOf(15), QualityKey, 1.0f, KeyFrameIntervalKey, 15 * 60),
+					new Format(MediaTypeKey, MediaType.VIDEO, EncodingKey, "black", FrameRateKey, Rational.valueOf(30)),
+					null, file, fileName);
+			screenRecorder.start();
+		}
+		catch (Exception e) {
+			Report.info("Exception : " + e.getMessage());
+		}
 		return screenRecorder;
 	}
-	
+
 	/**
 	 * 
 	 * @param recorder
@@ -103,9 +108,12 @@ public class VideoRecorder extends ScreenRecorder {
 	public static void stopRecording(VideoRecorder recorder) 
 	{
 		try {
-			screenRecorder.stop();
+			if(recorder != null) {
+				recorder.stop();
+			}
+			
 		} catch (IOException e) {
-			e.printStackTrace();
+			Report.info("Exception : " + e.getMessage());
 		}
 	}
 }

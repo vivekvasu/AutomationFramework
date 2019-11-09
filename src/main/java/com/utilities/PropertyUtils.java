@@ -14,7 +14,7 @@ public class PropertyUtils {
 	 */
 	public static Properties readPropertyFile(String filePath)
 	{
-		HTMLLogger.info("Entered method::readPropertyFile with '" + filePath + "'");
+		Report.info("Entered method::readPropertyFile with '" + filePath + "'");
 		InputStream input = null;
 		Properties properties = null;
 		try {
@@ -23,7 +23,7 @@ public class PropertyUtils {
 			properties.load(input);
 		}
 		catch (Exception e) {
-			HTMLLogger.info("Exception: " + e.getMessage());
+			Report.info("Exception: " + e.getMessage());
 			e.printStackTrace();
 		}
 		return properties;
