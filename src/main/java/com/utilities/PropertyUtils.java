@@ -1,7 +1,6 @@
 package com.utilities;
 
 import java.io.FileInputStream;
-import java.io.InputStream;
 import java.util.Properties;
 
 public class PropertyUtils {
@@ -15,16 +14,16 @@ public class PropertyUtils {
 	public static Properties readPropertyFile(String filePath)
 	{
 		Report.info("Entered method::readPropertyFile with '" + filePath + "'");
-		InputStream input = null;
+		FileInputStream input = null;
 		Properties properties = null;
 		try {
 			input = new FileInputStream(filePath);
 			properties = new Properties();
 			properties.load(input);
+			input.close();
 		}
 		catch (Exception e) {
 			Report.info("Exception: " + e.getMessage());
-			e.printStackTrace();
 		}
 		return properties;
 	}

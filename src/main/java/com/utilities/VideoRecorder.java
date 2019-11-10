@@ -30,8 +30,8 @@ import org.monte.screenrecorder.ScreenRecorder;
 
 public class VideoRecorder extends ScreenRecorder {
 
-	public static VideoRecorder screenRecorder = null;
-	public String name = "";
+	private static VideoRecorder screenRecorder = null;
+	private String name = "";
 
 	public VideoRecorder(GraphicsConfiguration cfg, Rectangle captureArea, Format fileFormat, Format screenFormat,
 			Format mouseFormat, Format audioFormat, File movieFolder, String name) throws IOException, AWTException {
@@ -59,9 +59,7 @@ public class VideoRecorder extends ScreenRecorder {
 
 		SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd 'at' HH.mm.ss");
 
-		File file = new File(movieFolder,//
-				name + dateFormat.format(new Date()) + "." + Registry.getInstance().getExtension(fileFormat));
-		return file;
+		return new File(movieFolder, name + dateFormat.format(new Date()) + "." + Registry.getInstance().getExtension(fileFormat));
 	}
 
 	/**

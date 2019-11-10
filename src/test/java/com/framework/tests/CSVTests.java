@@ -5,6 +5,7 @@ import java.util.List;
 import org.testng.annotations.Test;
 
 import com.utilities.CSVUtils;
+import com.utilities.Report;
 
 /**
  * @author Vivek Vasu
@@ -12,13 +13,13 @@ import com.utilities.CSVUtils;
 public class CSVTests extends FunctionalTests {
 
 	@Test
-	public void GetCSVColumnValuesTest() throws InterruptedException
+	public void getCSVColumnValuesTest()
 	{
 		String filePath = "./Resources/file.csv";
-		List<String> csvList = CSVUtils.GetCSVColumnValues(filePath, "value", new String[] {"Name", "Value"});
+		List<String> csvList = CSVUtils.getCSVColumnValues(filePath, "value", new String[] {"Name", "Value"});
 		for(String text : csvList)
 		{
-			System.out.println(text);
+			Report.info(text);
 		}
 	}
 }

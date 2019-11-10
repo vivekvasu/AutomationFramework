@@ -26,7 +26,7 @@ public class CSVUtils {
 	 * @param headers
 	 * @return - This method returns the list of CSV values of the give header column 
 	 */
-	public static List<String> GetCSVColumnValues(String filePath, String columnName, String[] headers)
+	public static List<String> getCSVColumnValues(String filePath, String columnName, String[] headers)
 	{
 		Report.info("Executing GetCSVColumnValues");
 		Reader reader = null;
@@ -36,7 +36,7 @@ public class CSVUtils {
 		try {
 			reader = Files.newBufferedReader(Paths.get(filePath));
 			csvParser = new CSVParser(reader, CSVFormat.DEFAULT.withHeader(headers).withIgnoreHeaderCase().withTrim());
-			csvColumnList = new ArrayList<String>();
+			csvColumnList = new ArrayList<>();
 			for (CSVRecord csvRecord : csvParser) 
 			{
 				csvValue = csvRecord.get(columnName);
@@ -45,7 +45,7 @@ public class CSVUtils {
 			csvParser.close();
 		} catch (IOException e) 
 		{
-			e.printStackTrace();
+			Report.info(e.getMessage());
 		}
 		Report.info("Exiting GetCSVColumnValues");
 		return csvColumnList;
@@ -58,7 +58,7 @@ public class CSVUtils {
 	 * @param index
 	 * @return - This method returns the list of CSV values of the give header column 
 	 */
-	public static List<String> GetCSVColumnValues(String filePath, Integer index)
+	public static List<String> getCSVColumnValues(String filePath, Integer index)
 	{
 		Reader reader = null;
 		CSVParser csvParser = null;
@@ -76,7 +76,7 @@ public class CSVUtils {
 			csvParser.close();
 		} catch (IOException e) 
 		{
-			e.printStackTrace();
+			Report.info(e.getMessage());
 		}
 		return csvColumnList;
 	}

@@ -6,7 +6,6 @@ import com.aventstack.extentreports.reporter.configuration.Theme;
 
 public class ExtentManager 
 {
-	private static ExtentHtmlReporter htmlReporter = null;
 	private static ExtentReports extent = null;
 
 	public static ExtentReports getInstance() {
@@ -19,6 +18,7 @@ public class ExtentManager
 
 	public static ExtentReports  setExtentReports ()
 	{
+		ExtentHtmlReporter htmlReporter = null;
 		htmlReporter = new ExtentHtmlReporter("./reports/extent.html");
 		htmlReporter.config().setReportName("My Test Report");
 		htmlReporter.config().setEncoding("utf-8");
