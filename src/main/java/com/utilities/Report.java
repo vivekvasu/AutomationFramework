@@ -9,6 +9,6 @@ public class Report extends HTMLLayout {
 	
 	public static void info(String message)
 	{
-		logger.info(message);
+		logger.info("Thread " + Thread.currentThread().getId() + " - " + message);
 	}
 }

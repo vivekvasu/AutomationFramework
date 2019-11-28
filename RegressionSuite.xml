@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="RegressionSuite" parallel="methods">
+	<test name="RegistrationPageRegressionTests">
+		<classes>
+			<class name="com.framework.tests.SampleTests">
+				<methods>
+					<include name="firstTest"></include>
+					<include name="secondTest"></include>
+					<include name="thirdTest"></include>
+				</methods>
+			</class>
+		</classes>
+	</test>
+</suite>
